@@ -1,0 +1,12 @@
+src_files:
+  - "application.{js,coffee}"
+stylesheets:
+  - assets/application.scss
+helpers:
+  - "helpers/**/*.js"
+spec_files:
+  - "**/*[sS]pec.{js,coffee}"
+src_dir:
+spec_dir: spec/javascripts
+boot_dir:
+boot_files:

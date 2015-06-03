@@ -1,0 +1,16 @@
+{
+  "imei": "013977000323877",
+  "phone_has_coverage": true,
+  "hardware_has_coverage": true,
+  "hardware_support_coverage": "PD",
+  "has_active_app": false,
+  "app_eligible": false,
+  "ppi_eligible": false,
+  "product_type": "iPhone",
+  "product_name": "iPhone 5c",
+  "days_since_dop": "298",
+  "has_tech_tool": false,
+  "hardware_expiration": "2016-08-10",
+  "phone_expiration": "2016-08-10",
+  "image": "https://km.support.apple.com.edgekey.net/kb/securedImage.jsp?configcode=FFHN&size=72x72"
+}

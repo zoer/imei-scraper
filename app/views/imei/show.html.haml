@@ -1,0 +1,24 @@
+.container{"ng-controller" => "SearchFormController"}
+  %h1= t(".title")
+
+  .input-group.input-group-lg
+    %span{class: "input-group-addon", id: "sizing-addon1"} #
+    %input{type: "text", class: "form-control",
+      placeholder: t(".imei_placeholder"), id: "search",
+      "ng-model" => "imei",
+      "aria-describedby" => "sizing-addon1",
+      "ng-keypress" => "onKeyPress($event)",
+      "ng-change" => "validateIMEI()"}
+    %span{class: "input-group-btn", id: "go"}
+      #invalid-imei{"ng-show" => "showInvalidBadge"}= t(".invalid_imei")
+      %button{class: "btn btn-success", type: "button",
+        "ng-model" => "loading",
+        "ng-click" => "search()",
+        "ng-class" => "loading ? 'disabled' : ''"}
+        %i{class: "fa", "ng-model" => "loading",
+          "ng-class" => "loading ? 'fa-cog fa-spin' : 'fa-search'"}
+
+  .result-container
+    %img.image{"ng-src" => "{{imeiInfoImage}}"}
+    %pre#result{"ng-show" => "imeiInfo"} {{imeiInfo}}
+

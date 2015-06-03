@@ -1,0 +1,39 @@
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  nav {
+    font-size: 2em;
+    a {
+      color: #000;
+    }
+  }
+}
+
+
+#invalid-imei {
+  position: absolute;
+  left: -100px;
+  top: 10px;
+  color: #d00;
+  border: 2px solid #d00;
+  z-index: 5;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 1;
+  padding: 0.3em;
+  border-radius: 3px;
+}
+
+.result-container {
+  position: relative;
+  img {
+    position: absolute;
+    right: 0.2em;
+    top: 1em;
+  }
+  pre#result {
+    margin-top: 1em;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #666;
+  }
+}

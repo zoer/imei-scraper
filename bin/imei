@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+# vi: ft=ruby
+
+$:.unshift File.expand_path("../../lib", __FILE__)
+require "scraper"
+require "json"
+
+if ARGV.size == 0
+  puts <<-USAGE
+Warranty device scraper.
+
+Usage:
+  imei [numbers...]
+
+Examples:
+  imei 123456789012347
+  imei 123456789012347 013977000323877 013896000639712
+  imei 123456789012347 013977000323877 > reports.json
+
+USAGE
+  exit 1
+end
+
+info = Scraper::ImeiReport.new
+result = ARGV.map { |arg| info.get(arg) }
+puts JSON.pretty_generate(result)

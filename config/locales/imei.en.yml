@@ -1,0 +1,7 @@
+en:
+  imei:
+    show:
+      title: IMEI Checker
+      imei_placeholder: "Enter IMEI here, e.g. 123456789012347"
+      check: Check
+      invalid_imei: Invalid IMEI
