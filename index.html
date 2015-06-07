@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.README.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h1>IMEI Scraper</h1>
+
+<p><a href="https://travis-ci.org/zoer/imei-scraper"><img src="https://travis-ci.org/zoer/imei-scraper.svg" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/zoer/imei-scraper"><img src="https://codeclimate.com/github/zoer/imei-scraper/badges/gpa.svg" alt="Code Climate"></a>
+<a href="http://imei-scraper.herokuapp.com"><img src="https://camo.githubusercontent.com/be46aee4f8d55e322c3e7db60ea23a4deb5427c9/68747470733a2f2f6865726f6b752d62616467652e6865726f6b756170702e636f6d2f3f6170703d6865726f6b752d6261646765" alt="Heroku app"></a></p>
+
+<p>Scrapes warranty infomation about Apple devices by IMEI number.</p>
+
+<h2>Installation</h2>
+
+<pre class="code shell"><code class="shell">$ git clone https://github.com/zoer/imei-scraper
+$ cd imei-sraper
+$ bundle install
+</code></pre>
+
+<h2>Usage</h2>
+
+<h3>Use with a browser</h3>
+
+<p><a href="http://imei-scraper.herokuapp.com">Quick demo on heroku</a></p>
+
+<p>or You can run it by self:</p>
+
+<pre class="code shell"><code class="shell">$ bundle exec rails s
+$ open http://localhost:3000
+</code></pre>
+
+<h3>Use from the command line</h3>
+
+<pre class="code shell"><code class="shell">$ bin/imei 123456789012347 013977000323877 013896000639712
+[
+  {
+    &quot;status&quot;: 200,
+    &quot;imei&quot;: &quot;123456789012347&quot;,
+    &quot;result&quot;: {
+      &quot;imei&quot;: &quot;123456789012347&quot;,
+      &quot;not_activated&quot;: true
+    }
+  },
+  {
+    &quot;status&quot;: 200,
+    &quot;imei&quot;: &quot;013977000323877&quot;,
+    &quot;result&quot;: {
+      &quot;phone_has_coverage&quot;: true,
+      &quot;hardware_has_coverage&quot;: true,
+      &quot;hardware_support_coverage&quot;: &quot;PD&quot;,
+      &quot;has_active_app&quot;: false,
+      &quot;app_eligible&quot;: false,
+      &quot;ppi_eligible&quot;: false,
+      &quot;product_type&quot;: &quot;iPhone&quot;,
+      &quot;days_since_dop&quot;: &quot;299&quot;,
+      &quot;has_tech_tool&quot;: false,
+      &quot;phone_expiration&quot;: &quot;2016-08-10&quot;,
+      &quot;hardware_expiration&quot;: &quot;2016-08-10&quot;,
+      &quot;image&quot;: &quot;https://km.support.apple.com.edgekey.net/kb/securedImage.jsp?configcode=FFHN&amp;size=72x72&quot;,
+      &quot;product_name&quot;: &quot;iPhone 5c&quot;,
+      &quot;imei&quot;: &quot;013977000323877&quot;
+    }
+  },
+...
+]
+</code></pre>
+
+<h3>Use IRB</h3>
+
+<pre class="code ruby"><code class="ruby">$ irb
+irb(main):001:0&gt; require_relative &quot;lib/scraper&quot;
+=&gt; true
+
+irb(main):002:0&gt; r = Scraper::ImeiReport.new
+=&gt; #&lt;Scraper::ImeiReport:0x007f024c893c08 @crawler=#&lt;Scraper::Crawler::AppleImei:0x007f024c88d3d0&gt;, @parser=#&lt;Scraper::Parser::ImeiPage:0x007f024c868cd8 @data={}, @doc=nil&gt;&gt;
+
+irb(main):003:0&gt; r.get(&quot;013977000323877&quot;)
+=&gt; {:status=&gt;200, :imei=&gt;&quot;013977000323877&quot;, :result=&gt;{:phone_has_coverage=&gt;true, :hardware_has_coverage=&gt;true, :hardware_support_coverage=&gt;&quot;PD&quot;, :has_active_app=&gt;false, :app_eligible=&gt;false, :ppi_eligible=&gt;false, :product_type=&gt;&quot;iPhone&quot;, :days_since_dop=&gt;&quot;299&quot;, :has_tech_tool=&gt;false, :phone_expiration=&gt;&quot;2016-08-10&quot;, :hardware_expiration=&gt;&quot;2016-08-10&quot;, :image=&gt;&quot;https://km.support.apple.com.edgekey.net/kb/securedImage.jsp?configcode=FFHN&amp;size=72x72&quot;, :product_name=&gt;&quot;iPhone 5c&quot;, :imei=&gt;&quot;013977000323877&quot;}}
+</code></pre>
+</div></div>
+
+    <div id="footer">
+  Generated on Sun Jun  7 08:04:04 2015 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.0).
+</div>
+
+  </body>
+</html>
