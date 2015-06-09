@@ -52,7 +52,7 @@ $ bin/imei 123456789012347 013977000323877 013896000639712
       "app_eligible": false,
       "ppi_eligible": false,
       "product_type": "iPhone",
-      "days_since_dop": "299",
+      "purchase_date": "2014-01-13",
       "has_tech_tool": false,
       "phone_expiration": "2016-08-10",
       "hardware_expiration": "2016-08-10",
